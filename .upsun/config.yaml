@@ -1,39 +1,36 @@
 applications:
-  # bun:
-  #   source:
-  #     root: bun
-  #   type: "nodejs:20"
-  #   build:
-  #     flavor: none
-  #   hooks:
-  #     build: |
-  #       set -e
-  #       bun install
-  #   web:
-  #     commands:
-  #       start: "bun index.ts"
+  bun_app:
+    source:
+      root: bun
+    stack: ["bun@1"]
+    hooks:
+      build: |
+        set -e
+        bun install
+    web:
+      commands:
+        start: "bun index.ts"
 
-  # deno:
-  #   source:
-  #     root: deno
-  #   stack: ['deno']
-  #   variables:
-  #     env:
-  #       DENO_DIR: './cache'
-  #   hooks:
-  #     build: |
-  #       set -e
-  #       deno cache deno.json
-  #   web:
-  #     commands:
-  #       start: 'deno run --allow-env --allow-net --allow-read main.ts'
+  deno_app:
+    source:
+      root: deno
+    stack: ["deno"]
+    variables:
+      env:
+        DENO_DIR: "./cache"
+    hooks:
+      build: |
+        set -e
+        deno cache deno.json
+    web:
+      commands:
+        start: "deno run --allow-env --allow-net --allow-read main.ts"
 
-  nodejs:
+  node_app:
     source:
       root: nodejs
-    type: "nodejs:20"
-    build:
-      flavor: none
+    stack:
+      - "nodejs@20"
     hooks:
       build: |
         set -e
@@ -45,12 +42,12 @@ applications:
 
 
 routes:
-  # "https://bun.{default}/":
-  #   type: upstream
-  #   upstream: "bun:http"
-  # "https://deno.{default}/":
-  #   type: upstream
-  #   upstream: "deno:http"
+  "https://bun.{default}/":
+    type: upstream
+    upstream: "bun_app:http"
+  "https://deno.{default}/":
+    type: upstream
+    upstream: "deno_app:http"
   "https://{default}/":
     type: upstream
-    upstream: "nodejs:http"
+    upstream: "node_app:http"
