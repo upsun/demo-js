@@ -22,14 +22,14 @@ applications:
                 bun install
         web:
             commands:
-                start: bun index.ts
+                start: bun start
 
 routes:
+
     "https://{default}/":
         type: upstream
         primary: true
         upstream: "main_app:http"
-
     "https://www.{default}":
         type: redirect
         to: "https://{default}/"
@@ -37,7 +37,6 @@ routes:
     "https://{default}/bun":
         type: upstream
         upstream: "bun_app:http"
-
     "https://www.{default}/bun":
         type: redirect
         to: "https://{default}/bun"

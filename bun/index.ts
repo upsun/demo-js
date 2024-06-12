@@ -1,12 +1,12 @@
-import figlet from "figlet";
+import {serve} from 'bun';
+import figlet from 'figlet';
 
-const config = require("platformsh-config").config();
-
-Bun.serve({
-  port: config.isValidPlatform() ? config.port : 3000,
-  fetch(_req: Request): Response {
-    const url = new URL(_req.url);
+serve({
+  fetch(req: Request) {
+    port: process.env.PLATFORM_APP_DIR ? process.env.PORT : 3000;
+    const url = new URL(req.url);
     const body = figlet.textSync("Bun!");
     if (url.pathname === "/bun") return new Response(body);
-  },
-});
+    return Response.redirect("/bun");
+  }
+})

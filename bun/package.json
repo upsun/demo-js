@@ -12,7 +12,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "figlet": "^1.7.0",
-    "platformsh-config": "^2.4.1"
+    "figlet": "^1.7.0"
   }
 }
