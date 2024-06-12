@@ -1,53 +1,102 @@
 applications:
-  bun_app:
-    source:
-      root: bun
-    stack: ["bun@1"]
-    hooks:
-      build: |
-        set -e
-        bun install
-    web:
-      commands:
-        start: "bun index.ts"
 
-  deno_app:
-    source:
-      root: deno
-    stack: ["deno"]
-    variables:
-      env:
-        DENO_DIR: "./cache"
-    hooks:
-      build: |
-        set -e
-        deno cache deno.json
-    web:
-      commands:
-        start: "deno run --allow-env --allow-net --allow-read main.ts"
+    app:
+        stack: []
+        source:
+            root: main
+        web:
+            locations:
+                /:
+                    root: "public"
+                    index:
+                        - index.html
 
-  node_app:
-    source:
-      root: nodejs
-    stack:
-      - "nodejs@20"
-    hooks:
-      build: |
-        set -e
-        npm install
-        npm run build
-    web:
-      commands:
-        start: "npm start"
-
+    bun_app: 
+        source:
+            root: bun
+        stack:
+            - bun@1
+        hooks:
+            build: |
+                set -e
+                bun install
+        web:
+            commands:
+                start: bun index.ts
 
 routes:
-  "https://bun.{default}/":
-    type: upstream
-    upstream: "bun_app:http"
-  "https://deno.{default}/":
-    type: upstream
-    upstream: "deno_app:http"
-  "https://{default}/":
-    type: upstream
-    upstream: "node_app:http"
+    "https://{default}/":
+        type: upstream
+        primary: true
+        upstream: "main_app:http"
+
+    "https://www.{default}":
+        type: redirect
+        to: "https://{default}/"
+
+    "https://bun.{default}/":
+        type: upstream
+        upstream: "bun_app:http"
+
+    "https://www.bun.{default}":
+        type: redirect
+        to: "https://bun.{default}/"
+
+
+  # "https://bun.{default}/":
+  #   type: upstream
+  #   upstream: "bun_app:http"
+
+# applications:
+#   bun_app:
+#     source:
+#       root: bun
+#     stack: ["bun@1"]
+#     hooks:
+#       build: |
+#         set -e
+#         bun install
+#     web:
+#       commands:
+#         start: "bun index.ts"
+
+#   deno_app:
+#     source:
+#       root: deno
+#     stack: ["deno"]
+#     variables:
+#       env:
+#         DENO_DIR: "./cache"
+#     hooks:
+#       build: |
+#         set -e
+#         deno cache deno.json
+#     web:
+#       commands:
+#         start: "deno run --allow-env --allow-net --allow-read main.ts"
+
+#   node_app:
+#     source:
+#       root: nodejs
+#     stack:
+#       - "nodejs@20"
+#     hooks:
+#       build: |
+#         set -e
+#         npm install
+#         npm run build
+#     web:
+#       commands:
+#         start: "npm start"
+
+
+# routes:
+#   "https://bun.{default}/":
+#     type: upstream
+#     upstream: "bun_app:http"
+#   "https://deno.{default}/":
+#     type: upstream
+#     upstream: "deno_app:http"
+#   "https://{default}/":
+#     type: upstream
+#     upstream: "node_app:http"
