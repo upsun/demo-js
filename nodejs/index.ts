@@ -7,7 +7,7 @@ const app: Express = express();
 const port = config.isValidPlatform() ? config.port : 3000;
 
 app.get("/", (_req: Request, res: Response) => {
-  const txt = figlet.textSync("NodeJS!");
+  const txt = figlet.textSync("NodeJSXXXXYYYY!");
   res.send(`<pre style="word-wrap: break-word; white-space: pre-wrap;">${txt}</pre>`);
 });
 
