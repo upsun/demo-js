@@ -34,11 +34,11 @@ routes:
         type: redirect
         to: "https://{default}/"
 
-    "https://bun.{default}/":
+    "https://{default}/bun":
         type: upstream
         upstream: "bun_app:http"
 
-    "https://www.bun.{default}":
+    "https://www.{default}":
         type: redirect
         to: "https://bun.{default}/"
 
