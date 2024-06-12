@@ -36,7 +36,7 @@ applications:
                 npm run build
         web:
             commands:
-                start: bun start
+                start: npm run start
 
 routes:
 
@@ -55,6 +55,12 @@ routes:
         type: redirect
         to: "https://{default}/bun"
 
+    "https://{default}/nodejs":
+        type: upstream
+        upstream: "nodejs_app:http"
+    "https://www.{default}/nodejs":
+        type: redirect
+        to: "https://{default}/nodejs"
 
   # "https://bun.{default}/":
   #   type: upstream

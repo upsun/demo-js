@@ -1,5 +1,5 @@
 import {serve} from 'bun';
-import figlet from 'figlet';
+import figlet from "figlet";
 
 serve({
   fetch(req: Request) {
