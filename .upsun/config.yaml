@@ -1,6 +1,6 @@
 applications:
 
-    app:
+    main_app:
         stack: []
         source:
             root: main
