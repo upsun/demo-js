@@ -38,9 +38,9 @@ routes:
         type: upstream
         upstream: "bun_app:http"
 
-    "https://www.{default}":
+    "https://www.{default}/bun":
         type: redirect
-        to: "https://bun.{default}/"
+        to: "https://{default}/bun"
 
 
   # "https://bun.{default}/":
