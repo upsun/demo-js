@@ -24,6 +24,20 @@ applications:
             commands:
                 start: bun start
 
+    nodejs_app: 
+        source:
+            root: nodejs
+        stack:
+            - node@20
+        hooks:
+            build: |
+                set -e
+                npm install
+                npm run build
+        web:
+            commands:
+                start: bun start
+
 routes:
 
     "https://{default}/":
