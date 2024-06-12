@@ -42,7 +42,7 @@ applications:
         source:
             root: deno
         stack:
-            - nodejs@22
+            - deno
         variables:
             env:
                 DENO_DIR: "./cache"
