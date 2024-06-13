@@ -35,7 +35,10 @@ applications:
             flavor: none
         hooks:
             build: pnpm install
-
+        variables:
+            env:
+                NODE_ENV: production
+                PORT: 3000
         # stack:
         #     - nodejs@22
         # hooks:
