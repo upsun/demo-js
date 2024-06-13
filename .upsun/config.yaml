@@ -31,7 +31,9 @@ applications:
         build:
             flavor: none
         hooks:
-            build: pnpm install
+            build: |
+                corepack enable pnpm 
+                pnpm install
 
         # stack:
         #     - nodejs@22
