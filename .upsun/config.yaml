@@ -28,12 +28,13 @@ applications:
         source:
             root: nodejs
         type: "nodejs:20"
+        dependencies:
+            nodejs: 
+                pnpm: "*"
         build:
             flavor: none
         hooks:
-            build: |
-                corepack enable pnpm 
-                pnpm install
+            build: pnpm install
 
         # stack:
         #     - nodejs@22
