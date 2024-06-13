@@ -1,15 +1,18 @@
 applications:
 
     main_app:
-        stack: []
         source:
-            root: mainb
+            root: main
+        stack:
+            - nodejs@22
+        hooks:
+            build: |
+                set -e
+                npm install
+                npm run build
         web:
-            locations:
-                /:
-                    root: "public"
-                    index:
-                        - index.html
+            commands:
+                start: npm run start -- --port $PORT
 
     bun_app: 
         source:
