@@ -3,8 +3,7 @@ applications:
     main_app:
         stack: []
         source:
-            root: main
-        web:
+            root: mainb
             locations:
                 /:
                     root: "public"
