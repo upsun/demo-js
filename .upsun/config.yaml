@@ -4,6 +4,7 @@ applications:
         stack: []
         source:
             root: mainb
+        web:
             locations:
                 /:
                     root: "public"
