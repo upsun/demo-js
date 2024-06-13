@@ -27,16 +27,23 @@ applications:
     nodejs_app: 
         source:
             root: nodejs
-        stack:
-            - nodejs@22
+        type: "nodejs:20"
+        build:
+            flavor: none
         hooks:
-            build: |
-                set -e
-                npm install
-                npm run build
+            build: pnpm install
+
+        # stack:
+        #     - nodejs@22
+        # hooks:
+        #     build: |
+        #         set -e
+        #         npm install
+        #         npm run build
+
         web:
             commands:
-                start: npm run start
+                start: pnpm run start
 
     deno_app: 
         source:
