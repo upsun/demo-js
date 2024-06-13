@@ -3,7 +3,7 @@ applications:
     main_app:
         stack: []
         source:
-            root: mainb
+            root: main
         web:
             locations:
                 /:
@@ -27,31 +27,16 @@ applications:
     nodejs_app: 
         source:
             root: nodejs
-        type: "nodejs:20"
-        dependencies:
-            nodejs: 
-                pnpm: "*"
-        build:
-            flavor: none
+        stack:
+            - nodejs@22
         hooks:
             build: |
-                pnpm install
-                pnpm run build
-        # variables:
-        #     env:
-        #         NODE_ENV: production
-        #         PORT: 3000
-        # stack:
-        #     - nodejs@22
-        # hooks:
-        #     build: |
-        #         set -e
-        #         npm install
-        #         npm run build
-
+                set -e
+                npm install
+                npm run build
         web:
             commands:
-                start: pnpm run start
+                start: npm run start
 
     deno_app: 
         source:
