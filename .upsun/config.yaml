@@ -37,10 +37,10 @@ applications:
             build: |
                 pnpm install
                 pnpm run build
-        variables:
-            env:
-                NODE_ENV: production
-                PORT: 3000
+        # variables:
+        #     env:
+        #         NODE_ENV: production
+        #         PORT: 3000
         # stack:
         #     - nodejs@22
         # hooks:
