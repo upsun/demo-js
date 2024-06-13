@@ -3,7 +3,7 @@ applications:
     main_app:
         stack: []
         source:
-            root: main
+            root: mainb
         web:
             locations:
                 /:
@@ -34,7 +34,9 @@ applications:
         build:
             flavor: none
         hooks:
-            build: pnpm install
+            build: |
+                pnpm install
+                pnpm run build
         variables:
             env:
                 NODE_ENV: production
