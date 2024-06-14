@@ -55,10 +55,10 @@ It leverages the [https://docs.upsun.com/create-apps/app-reference/composable-im
 └── utils
 ```
 
-It is comp
+It is comprised of four [application containers ](https://docs.upsun.com/create-apps.html)
 
 <p align="center">
-<img src="utils/graph.png">
+<img src="utils/graph.png" width="300px">
 </p>
 
 ## Getting started
