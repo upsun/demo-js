@@ -11,8 +11,13 @@ applications:
                 npm install
                 npm run build
         web:
-            commands:
-                start: npm run start -- --port $PORT
+            # commands:
+            #     start: npm run start -- --port $PORT
+            locations:
+                /:
+                    root: "dist"
+                    index:
+                      - index.html
 
     bun_app: 
         source:
