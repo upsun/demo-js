@@ -30,14 +30,14 @@
 </p>
 
 <p align="center">
-<a href="https://console.platform.sh/projects/create-project/?template=https://raw.githubusercontent.com/platformsh/template-builder/master/templates/drupal9/.platform.template.yaml&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://raw.githubusercontent.com/platformsh-templates/drupal9/updates/.platform.template.yaml" target="_blank" title="Deploy with Platform.sh"><img src="utils/dou-button.svg" width="175px"></a>
+<a href="https://console.upsun.com/projects/create-project/?template=https://github.com/upsun/demo-nix-js.git&utm_campaign=deploy_on_up?utm_medium=button&utm_source=event_dotjs&utm_content=event_dotjs" target="_blank" title="Deploy with Upsun"><img src="utils/dou-button.svg" width="175px"></a>
 </p>
 
 ## About
 
 This is a simple demo project meant to introduce you to working with Javascript runtimes on [Upsun](https://upsun.com).
 
-It leverages the [https://docs.upsun.com/create-apps/app-reference/composable-image.html](composable image) application container syntax, which is built on [Nix](https://nix.dev/) and [Nixpkgs](https://search.nixos.org/packages) under the hood. 
+It leverages the [composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.html) application container syntax, which is built on [Nix](https://nix.dev/) and [Nixpkgs](https://search.nixos.org/packages) under the hood. 
 
 ```bash
 .
@@ -80,9 +80,4 @@ When deployed to the [Upsun management console](https://console.upsun.com) they 
 1. Choose the **Deploy an existing local Git repository** option.
 1. 
 
-If you already have access to Upsun:
-
-- Visit the Upsun Console (https://console.upsun.com/projects/create-project) to create a new project
-- Create or select an organization to run the demo on
-- Click **Explore Upsun** to start the demo
-
+https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L1-20
