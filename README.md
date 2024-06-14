@@ -29,9 +29,9 @@
 <br /><br />
 </p>
 
-<p align="center">
+<!-- <p align="center">
 <a href="https://console.upsun.com/projects/create-project/?template=https://github.com/upsun/demo-nix-js.git&utm_campaign=deploy_on_up?utm_medium=button&utm_source=event_dotjs&utm_content=event_dotjs" target="_blank" title="Deploy with Upsun"><img src="utils/dou-button.svg" width="175px"></a>
-</p>
+</p> -->
 
 ## About
 
@@ -74,10 +74,37 @@ When deployed to the [Upsun management console](https://console.upsun.com) they 
 
 ## Getting started
 
+1. Clone this repository
 
-1. Visit [the Upsun website](https://auth.upsun.com/register?) to register for a trial account. Complete the information and finish sign up.
+    ```bash
+    git clone git@github.com:upsun/demo-nix-js.git && cd demo-nix-js
+    ```
+
+1. Visit [the Upsun website](https://auth.upsun.com/register?) to register for a trial account. 
+    Complete the information and finish sign up.
 1. Create your first organization where the project will live.
 1. Choose the **Deploy an existing local Git repository** option.
-1. 
+1. Name the project, and provide a region for it to be deployed. 
+    Keep the **Production environment name** as the default `main`.
+    Consider selecting a **Green region** (indicated with a green leaf) where carbon impact is lowest.
+1. Followow the instructions on the resulting screen to:
+    - Install the Upsun CLI
+    - Clone this repository
+
+        ```bash
+        git clone git@github.com:upsun/demo-nix-js.git && cd demo-nix-js
+        ```
+    
+    - Connect your local project to Upsun
+
+        ```bash
+        upsun project:set-remote GENERATED_PROJECT_ID
+        ```
+1. Since Upsun configuration has already been committed to the repo, push to Upsun using the CLI:
+
+    ```bash
+    upsun push
+    ```
+
 
 https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L1-20
