@@ -46,7 +46,7 @@ This is a simple demo project meant to introduce you to working with Javascript 
 1. Name the project, and provide a region for it to be deployed. 
     Keep the **Production environment name** as the default `main`.
     Consider selecting a **Green region** (indicated with a green leaf) where carbon impact is lowest.
-1. Followow the instructions on the resulting screen to:
+1. Follow the instructions on the resulting screen to:
     - Install the Upsun CLI
     - Clone this repository
 
