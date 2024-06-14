@@ -180,7 +180,7 @@ Summary of changes:
 
 > [!NOTE]
 > While the **resource allocation** activity executes on your production environment, view its log by clicking the three vertical dots on the far right side of the component. 
-> Notice as that activity runs, that each of the applications is **not** rebuilt. 
+> Notice as that activity runs, that each of the applications is **not** rebuilt (the _Reusing existing build..._ text below). 
 > ```bash
 > Configuring resources
 >  Updating 'main_app' resources from 0.5 CPU, 224MB RAM to 0.1 CPU, 64MB RAM.
@@ -203,6 +203,19 @@ Summary of changes:
 > ...
 >
 > ```
+>
+> Above all else, **this** is the principal feature of Upsun.
+> The configuration file `.upsun/config.yaml` enables DevOps workflows and infrastructure-as-code,
+> but it is this - reusable build images that are environment-independent - that allow you to 
+> provision truly identical preview environments at all will to test your revisions.
+>
+> **See how in the next section.**
+
+In the Upsun console, you can view resource consumption over time for each of the containers in the environment's cluster to determine how best resources should be adjusted.
+
+<p align="center">
+<img src="utils/resources.png">
+</p>
 
 ### 2. Make a revision
 
