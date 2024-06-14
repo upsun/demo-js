@@ -65,7 +65,11 @@ This is a simple demo project meant to introduce you to working with Javascript 
     upsun push
     ```
 
-When the activity has completed, you will be able to visit the deployed project from its generated URL, which you can find with the command `upsun url`.
+When the activity has completed, you will be able to visit the deployed project from its generated URL, which you can find with the command
+
+```bash
+upsun url
+```
 
 ## What is deployed
 
@@ -91,10 +95,25 @@ This project leverages the Upsun [composable image](https://docs.upsun.com/creat
 
 It is comprised of four [application containers ](https://docs.upsun.com/create-apps.html):
 
-- `bun`: a simple [bun](https://bun.sh/)-based application, deployed with the [`bun` Nix package](https://search.nixos.org/packages?channel=24.05&show=bun&from=0&size=50&sort=relevance&type=packages&query=bun).
-- `deno`: a simple [deno](https://deno.com/)-based application, deployed with the [`bun` Nix package](https://search.nixos.org/packages?channel=24.05&show=deno&from=0&size=50&sort=relevance&type=packages&query=deno).
-- `nodejs`: a simple [Node.js](https://nodejs.org/en)-based application, deployed with the [`nodejs` Nix package](https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=nodejs).
-- `main`: a basic [Astro](https://astro.build/) applications, deployed with the [`nodejs` Nix package](https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=nodejs).
+- `bun`: 
+
+    - a simple [bun](https://bun.sh/)-based application, deployed with the [`bun` Nix package](https://search.nixos.org/packages?channel=24.05&show=bun&from=0&size=50&sort=relevance&type=packages&query=bun).
+    - configuration to deploy this app can be found under the [`applications.bun_app` key](https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L21) in `.upsun/config.yaml`.
+
+- `deno`: 
+
+    - a simple [deno](https://deno.com/)-based application, deployed with the [`bun` Nix package](https://search.nixos.org/packages?channel=24.05&show=deno&from=0&size=50&sort=relevance&type=packages&query=deno).
+    - configuration to deploy this app can be found under the [`applications.deno_app` key](https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L48) in `.upsun/config.yaml`.
+
+- `nodejs`: 
+
+    - a simple [Node.js](https://nodejs.org/en)-based application, deployed with the [`nodejs` Nix package](https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=nodejs).
+    - configuration to deploy this app can be found under the [`applications.nodejs_app` key](https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L34) in `.upsun/config.yaml`.
+
+- `main`: 
+
+    - a basic [Astro](https://astro.build/) applications, deployed with the [`nodejs` Nix package](https://search.nixos.org/packages?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=nodejs).
+    - configuration to deploy this app can be found under the [`applications.main_app` key](https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L3) in `.upsun/config.yaml`.
 
 Each of these applications' configuration can be found in the shared `.upsun/config.yaml` file.
 
