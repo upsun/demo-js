@@ -11,11 +11,10 @@ applications:
                 npm install
                 npm run build
         web:
-            # commands:
-            #     start: npm run start -- --port $PORT
             locations:
                 /:
                     root: "dist"
+                    passthru: true
                     index:
                       - index.html
 
