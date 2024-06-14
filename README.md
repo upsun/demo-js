@@ -123,3 +123,86 @@ When deployed to the [Upsun management console](https://console.upsun.com) they 
 <img src="utils/graph.png" width="500px">
 </p>
 
+## Next steps
+
+### 1. Update production resources
+
+Upsun automatically [configures default resources for each application](https://docs.upsun.com/manage-resources/adjust-resources.html) on the production environment (**Main**), which you can view with the CLI command `upsun resources:set`:
+
+```bash
+$ upsun resources:set
+Resource configuration for the project YOUR_PROJECT_NAME (PROJECT_ID), environment main (type: production):
++----------------+------+-----+-------------+-----------+-----------+
+| App or service | Size | CPU | Memory (MB) | Disk (MB) | Instances |
++----------------+------+-----+-------------+-----------+-----------+
+| bun_app        | 0.5  | 0.5 | 224         |           | 1         |
+| deno_app       | 0.5  | 0.5 | 224         |           | 1         |
+| main_app       | 0.5  | 0.5 | 224         |           | 1         |
+| nodejs_app     | 0.5  | 0.5 | 224         |           | 1         |
++----------------+------+-----+-------------+-----------+-----------+
+```
+
+You can reuse this same command to reduce the resources of each application to their minimum sizes:
+
+```bash
+$ upsun resources:set --size '*:0.1' --disk '*:0'
+
+...
+
+Summary of changes:
+  App: bun_app
+    CPU: decreasing from 0.5 to 0.1
+    Memory: decreasing from 224 MB to 64 MB
+  App: deno_app
+    CPU: decreasing from 0.5 to 0.1
+    Memory: decreasing from 224 MB to 64 MB
+  App: main_app
+    CPU: decreasing from 0.5 to 0.1
+    Memory: decreasing from 224 MB to 64 MB
+  App: nodejs_app
+    CPU: decreasing from 0.5 to 0.1
+    Memory: decreasing from 224 MB to 64 MB
+
+Are you sure you want to continue? [Y/n]
+```
+
+You can also increase the number of instances of any application when desired:
+
+```bash
+$ upsun resources:set --count 'main_app:3' --disk '*:0'       
+
+...
+
+Summary of changes:
+  App: main_app
+    Instance count: increasing from 1 to 3
+```
+
+> [!NOTE]
+> While the **resource allocation** activity executes on your production environment, view its log by clicking the three vertical dots on the far right side of the component. 
+> Notice as that activity runs, that each of the applications is **not** rebuilt. 
+> ```bash
+> Configuring resources
+>  Updating 'main_app' resources from 0.5 CPU, 224MB RAM to 0.1 CPU, 64MB RAM.
+>  Updating 'bun_app' resources from 0.5 CPU, 224MB RAM to 0.1 CPU, 64MB RAM.
+>  Updating 'nodejs_app' resources from 0.5 CPU, 224MB RAM to 0.1 CPU, 64MB RAM.
+>  Updating 'deno_app' resources from 0.5 CPU, 224MB RAM to 0.1 CPU, 64MB RAM.
+>
+> Building application 'main_app' (runtime type: generic:2023.1, tree: db728ad)
+>  Reusing existing build for this tree ID
+>
+> Building application 'bun_app' (runtime type: generic:2023.1, tree: 37066a9)
+>  Reusing existing build for this tree ID
+>
+> Building application 'nodejs_app' (runtime type: generic:2023.1, tree: e6f7918)
+>  Reusing existing build for this tree ID
+>
+> Building application 'deno_app' (runtime type: generic:2023.1, tree: 750397e)
+>  Reusing existing build for this tree ID
+>
+> ...
+>
+> ```
+
+### 2. Make a revision
+
