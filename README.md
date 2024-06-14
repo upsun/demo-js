@@ -102,7 +102,7 @@ It is comprised of four [application containers ](https://docs.upsun.com/create-
 
 - `deno`: 
 
-    - a simple [deno](https://deno.com/)-based application, deployed with the [`bun` Nix package](https://search.nixos.org/packages?channel=24.05&show=deno&from=0&size=50&sort=relevance&type=packages&query=deno).
+    - a simple [deno](https://deno.com/)-based application, deployed with the [`deno` Nix package](https://search.nixos.org/packages?channel=24.05&show=deno&from=0&size=50&sort=relevance&type=packages&query=deno).
     - configuration to deploy this app can be found under the [`applications.deno_app` key](https://github.com/upsun/demo-nix-js/blob/main/.upsun/config.yaml#L48) in `.upsun/config.yaml`.
 
 - `nodejs`: 
