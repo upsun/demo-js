@@ -1,6 +1,6 @@
 import figlet from "npm:figlet";
 
-const port = Deno.env.get("PLATFORM_APP_DIR") ? Deno.env.get("PORT") : 3003;
+const port = Deno.env.get("PLATFORM_APP_DIR") ? Deno.env.get("PORT") : 3002;
 
 const handler = (_req: Request): Response => {
     const reqPath = new URL(_req.url).pathname;

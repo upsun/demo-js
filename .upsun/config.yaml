@@ -10,8 +10,8 @@ applications:
             build: |
                 set -e
                 npm install
-                npm run build
                 npm run setup-env
+                npm run build
         web:
             locations:
                 /:
@@ -38,6 +38,7 @@ applications:
             root: nodejs
         stack:
             - nodejs@22
+            - nodePackages.npm
         hooks:
             build: |
                 set -e
@@ -58,7 +59,7 @@ applications:
         hooks:
             build: |
                 set -e
-                deno cache deno.json
+                deno cache package.json
         web:
             commands:
                 start: deno task start
