@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && astro preferences disable devToolbar",
+    "build": "astro check && astro build",
+    "setup-env": "astro preferences disable devToolbar && astro telemetry disable",
     "preview": "astro preview",
     "astro": "astro"
   },

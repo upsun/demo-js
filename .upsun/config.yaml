@@ -5,11 +5,13 @@ applications:
             root: main
         stack:
             - nodejs@20
+            - nodePackages.npm
         hooks:
             build: |
                 set -e
                 npm install
                 npm run build
+                npm run setup-env
         web:
             locations:
                 /:
