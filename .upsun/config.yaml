@@ -4,7 +4,7 @@ applications:
         source:
             root: main
         stack:
-            - nodejs@22
+            - nodejs@20
         hooks:
             build: |
                 set -e
