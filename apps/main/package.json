@@ -1,0 +1,22 @@
+{
+  "name": "main",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "npm run setup-env && astro check && astro build",
+    "setup-env": "astro preferences disable devToolbar && astro telemetry disable",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "astro": "^4.10.2",
+    "marked": "^13.0.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

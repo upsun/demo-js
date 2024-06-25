@@ -2,9 +2,9 @@ applications:
 
     main_app:
         source:
-            root: main
+            root: apps/main
         stack:
-            - nodejs@20
+            - nodejs@22
             - nodePackages.npm
         hooks:
             build: |
@@ -22,7 +22,7 @@ applications:
 
     bun_app: 
         source:
-            root: bun
+            root: apps/bun
         stack:
             - bun@1
         hooks:
@@ -35,7 +35,7 @@ applications:
 
     nodejs_app: 
         source:
-            root: nodejs
+            root: apps/nodejs
         stack:
             - nodejs@22
             - nodePackages.npm
@@ -50,7 +50,7 @@ applications:
 
     deno_app: 
         source:
-            root: deno
+            root: apps/deno
         stack:
             - deno
         variables:
