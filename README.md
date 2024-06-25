@@ -226,18 +226,8 @@ TBD
 We can use Nix to replicate the production environment locally.
 
 ```
-# main - serves at http://localhost:8888
-cd main && nix-shell --run "npm run dev -- --port 8888"
-
-# bun - serves at http://localhost:3000
-cd bun && nix-shell --run "bun start"
-
-# nodejs - serves at http://localhost:3001
-cd nodejs && nix-shell --run "npm run dev"
-
-# deno - serves at http://localhost:3003
-cd deno && nix-shell --run "deno task start"
-
+# Central (main) app serves at http://localhost:4321
+nix-shell --run "npm run start"
 
 # Cleaning up
 nix-collect-garbage

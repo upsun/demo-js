@@ -55,7 +55,7 @@ applications:
             - deno
         variables:
             env:
-                DENO_DIR: "./cache"
+                DENO_DIR: "cache"
         hooks:
             build: |
                 set -e
