@@ -1,5 +1,12 @@
 import express, { Express, Request, Response } from "express";
 import figlet from "figlet";
+import mysql from "mysql2/promise";
+
+// function openConnection () {
+//   return mysql.createConnection({
+//     host: process.env.PLATFORM_APP_DIR
+//   })
+// }
 
 const app: Express = express();
 const port = process.env.PLATFORM_APP_DIR ? process.env.PORT : 3001;
