@@ -75,22 +75,31 @@ upsun url
 
 This project leverages the Upsun [composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.html) application container syntax, which is built on [Nix](https://nix.dev/) and [Nixpkgs](https://search.nixos.org/packages) under the hood. 
 
+It is organized as to use [Turborepo](https://turbo.build/repo), a high-performance build system that simplifies (for this project) local development.
+
 ```bash
 .
 ├── .git
 ├── .gitignore
 ├── .upsun
 │   └── config.yaml
+├── apps
+│   ├── bun
+│   │   └── ...
+│   ├── deno
+│   │   └── ...
+│   ├── main
+│   │   └── ...
+│   └── nodejs
+│       └── ...
+├── utils
+│   └── ...
+├── LICENSE.md
 ├── README.md
-├── bun
-│   └── ...
-├── deno
-│   └── ...
-├── main
-│   └── ...
-├── nodejs
-│   └── ...
-└── utils
+├── package-lock.json
+├── package.json
+├── shell.nix
+└── turbo.json
 ```
 
 It is comprised of four [application containers ](https://docs.upsun.com/create-apps.html):
@@ -169,13 +178,13 @@ Are you sure you want to continue? [Y/n]
 You can also increase the number of instances of any application when desired:
 
 ```bash
-$ upsun resources:set --count 'main_app:3' --disk '*:0'       
+$ upsun resources:set --count 'main_app:2' --disk '*:0'       
 
 ...
 
 Summary of changes:
   App: main_app
-    Instance count: increasing from 1 to 3
+    Instance count: increasing from 1 to 2
 ```
 
 > [!NOTE]
@@ -217,6 +226,68 @@ In the Upsun console, you can view resource consumption over time for each of th
 <img src="utils/resources.png">
 </p>
 
-### 2. Make a revision
+### 2. Local development
+
+This demo includes two methods for local development. 
+
+- [Using local runtimes](#local-runtimes)
+- [Using Nix](#nix)
+
+#### Local runtimes
+
+**Requirements:**
+
+- [Node.js 22](https://nodejs.org/en/download/package-manager)
+- [Deno](https://deno.com/)
+- [Bun](https://bun.sh/)
+
+**Run:**
+
+1. Build the apps:
+
+```bash
+./utils/local.sh
+```
+
+2. Run the local servers:
+
+```bash
+npm run start
+```
+
+#### Nix
+
+This project leverages the Upsun [composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.html) application container syntax, which is built on [Nix](https://nix.dev/) and [Nixpkgs](https://search.nixos.org/packages) under the hood. 
+
+We can use Nix to replicate the production environment locally, downloading each runtime in isolation instead of doing so manually as is shown above.
+
+**Requirements:**
+
+- [Nix](https://nixos.org/download/)
+
+**Run:**
+
+1. Build the apps:
+
+```bash
+nix-shell
+```
+
+> [!NOTE]
+> The first time you run this command will take some time, but only on that first time. 
+
+2. Cleanup when finished:
+
+Exit the Nix shell (Ctrl + C, then Ctrl + D), then run: 
+
+```bash
+nix-collect-garbage
+```
+
+### 3. Make a revision
 
 TBD
+
+### 4. Do the demo
+
+If you're looking to understand even more about the Upsun development workflow, follow the steps to spin up the [Upsun Demo Project](https://github.com/platformsh/demo-project/tree/main).

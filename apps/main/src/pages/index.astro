@@ -36,24 +36,24 @@ import Card from '../components/Card.astro';
 		<h1>Welcome to <span class="text-gradient">Upsun</span></h1>
 		<p class="instructions">
 			<strong>Good evening dotJS!</strong><br/><br/>
-			This is a simple project demonstrates how Javascript applications can be deployed on<br/>
-			Upsun with a number of runtimes using the Nix-based composable-image container.<br/>
+			This is a simple project demonstrates how Javascript applications can be deployed<br/>
+			on Upsun with a number of runtimes using the Nix-based composable-image container.<br/>
 			<br/>
-			<a href="https://github.com/upsun/demo-nix-js?tab=readme-ov-file#what-is-deployed"><strong>See how this demo works</strong></a>
+			<a href="https://github.com/upsun/demo-nix-js?tab=readme-ov-file#what-is-deployed" target="_blank"><strong>See how this demo works</strong></a>
 		</p>
 		<ul role="list" class="link-card-grid">
 			<Card
-				href="/bun"
+				href=`${import.meta.env.PLATFORM_APP_DIR ? '/bun' : 'http://localhost:3000'}`
 				title="Bun"
 				body="Bun is an all-in-one toolkit for JavaScript and TypeScript apps that ships as a single executable called bun."
 			/>
 			<Card
-				href="/deno"
+				href=`${import.meta.env.PLATFORM_APP_DIR ? '/deno' : 'http://localhost:3002'}`
 				title="Deno"
 				body="Deno is an open source JavaScript, TypeScript, and WebAssembly runtime with secure defaults and a great developer experience. It's built on V8, Rust, and Tokio."
 			/>
 			<Card
-				href="/nodejs"
+				href=`${import.meta.env.PLATFORM_APP_DIR ? '/nodejs' : 'http://localhost:3001'}`
 				title="Node.js"
 				body="Node.js is an asynchronous event-driven JavaScript runtime."
 			/>

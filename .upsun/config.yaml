@@ -2,13 +2,15 @@ applications:
 
     main_app:
         source:
-            root: main
+            root: apps/main
         stack:
             - nodejs@22
+            - nodePackages.npm
         hooks:
             build: |
                 set -e
                 npm install
+                npm run setup-env
                 npm run build
         web:
             locations:
@@ -20,7 +22,7 @@ applications:
 
     bun_app: 
         source:
-            root: bun
+            root: apps/bun
         stack:
             - bun@1
         hooks:
@@ -33,9 +35,10 @@ applications:
 
     nodejs_app: 
         source:
-            root: nodejs
+            root: apps/nodejs
         stack:
             - nodejs@22
+            - nodePackages.npm
         hooks:
             build: |
                 set -e
@@ -47,16 +50,17 @@ applications:
 
     deno_app: 
         source:
-            root: deno
+            root: apps/deno
         stack:
             - deno
         variables:
             env:
-                DENO_DIR: "./cache"
+                DENO_DIR: "cache"
         hooks:
             build: |
                 set -e
-                deno cache deno.json
+                deno cache package.json
+                deno compile --allow-env --allow-net --allow-read main.ts
         web:
             commands:
                 start: deno task start

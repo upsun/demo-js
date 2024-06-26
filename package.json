@@ -1,0 +1,33 @@
+{
+  "name": "@upsun/demo-nix-js",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"> <a href=\"https://www.upsun.com/\"> <img src=\"utils/logo.svg\" width=\"300px\"> </a> </p>",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "start": "turbo start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upsun/demo-nix-js.git"
+  },
+  "author": "Upsun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/upsun/demo-nix-js/issues"
+  },
+  "homepage": "https://github.com/upsun/demo-nix-js#readme",
+  "dependencies": {
+    "turbo": "^2.0.4"
+  },
+  "packageManager": "npm@10.5.0",
+  "engines": {
+    "node": ">=22"
+  }
+}

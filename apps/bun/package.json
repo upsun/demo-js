@@ -3,6 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
+    "build": "echo \"no build step defined!\"",
     "start": "bun run index.ts"
   },
   "devDependencies": {
