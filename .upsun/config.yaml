@@ -60,6 +60,7 @@ applications:
             build: |
                 set -e
                 deno cache package.json
+                deno compile --allow-env --allow-net --allow-read main.ts
         web:
             commands:
                 start: deno task start
