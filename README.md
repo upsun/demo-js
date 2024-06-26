@@ -288,8 +288,28 @@ nix-collect-garbage
 
 ### 3. Make a revision
 
-TBD
+In your local environment, run the command:
+
+```bash
+upsun environment new-feature main
+```
+
+Follow the prompts. 
+This will create a new environment - which is _an exact clone_ of production, including its data (see the Node.js path (`/nodejs`)) to verify this.
+Feel free to use the [local development](#2-local-development) instructions to make a revision, push to Upsun (`upsun push`), and test in the isolated space using production data.
+
+When you're satisfied, feel free to `upsun merge` to promote your revisions into production.
+
+Ultimately, this is the workflow that makes Upsun standout amongst other providers. 
+While you may favor an integration to GitHub or GitLab over this local example, being able to iteratively improve your applications with _true staging environments_ in this way brings you a lot of power. 
 
 ### 4. Do the demo
 
 If you're looking to understand even more about the Upsun development workflow, follow the steps to spin up the [Upsun Demo Project](https://github.com/platformsh/demo-project/tree/main).
+
+### 5. Join the Community
+
+There are far more concepts than could be explored in a single demo project, talk, or blog post. 
+But we have some of the best minds in web development and computing ready and excited to help with your side project, experiment, or next big idea.
+
+[Join us on Discord and less us help you get going](https://discord.gg/PkMc2pVCDV)!
