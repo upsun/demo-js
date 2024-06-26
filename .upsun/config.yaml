@@ -44,6 +44,10 @@ applications:
                 set -e
                 npm install
                 npm run build
+
+        relationships:
+            database:
+            
         web:
             commands:
                 start: npm run start
@@ -64,6 +68,10 @@ applications:
         web:
             commands:
                 start: deno task start
+
+services:
+    database:
+        type: mariadb:10.4
 
 routes:
 

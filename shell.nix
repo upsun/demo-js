@@ -5,6 +5,8 @@ in
 
 pkgs.mkShellNoCC {
   packages = with pkgs; [
+    upsun
+    jq
     bun
     nodejs_22
     deno
@@ -13,6 +15,7 @@ pkgs.mkShellNoCC {
   DENO_DIR="./cache";
   shellHook = ''
     ./utils/local.sh
+    . ./utils/local_var.sh
     npm run start
   '';
 }
