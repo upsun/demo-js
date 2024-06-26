@@ -6,6 +6,7 @@ applications:
         stack:
             - nodejs@22
             - nodePackages.npm
+            - python@3.12
         hooks:
             build: |
                 set -e
@@ -39,6 +40,7 @@ applications:
         stack:
             - nodejs@22
             - nodePackages.npm
+            - php@8.3
         hooks:
             build: |
                 set -e
