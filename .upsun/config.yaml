@@ -65,10 +65,6 @@ applications:
             commands:
                 start: deno task start
 
-        # mounts:
-        #     'cache':
-        #         source: storage
-
 routes:
 
     "https://{default}/":
