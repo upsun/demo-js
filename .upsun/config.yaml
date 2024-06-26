@@ -65,9 +65,9 @@ applications:
             commands:
                 start: deno task start
 
-        mounts:
-            'cache':
-                source: storage
+        # mounts:
+        #     'cache':
+        #         source: storage
 
 routes:
 

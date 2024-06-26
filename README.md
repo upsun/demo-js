@@ -81,16 +81,23 @@ This project leverages the Upsun [composable image](https://docs.upsun.com/creat
 ├── .gitignore
 ├── .upsun
 │   └── config.yaml
+├── apps
+│   ├── bun
+│   │   └── ...
+│   ├── deno
+│   │   └── ...
+│   ├── main
+│   │   └── ...
+│   └── nodejs
+│       └── ...
+├── utils
+│   └── ...
+├── LICENSE.md
 ├── README.md
-├── bun
-│   └── ...
-├── deno
-│   └── ...
-├── main
-│   └── ...
-├── nodejs
-│   └── ...
-└── utils
+├── package-lock.json
+├── package.json
+├── shell.nix
+└── turbo.json
 ```
 
 It is comprised of four [application containers ](https://docs.upsun.com/create-apps.html):
@@ -135,10 +142,10 @@ Resource configuration for the project YOUR_PROJECT_NAME (PROJECT_ID), environme
 +----------------+------+-----+-------------+-----------+-----------+
 | App or service | Size | CPU | Memory (MB) | Disk (MB) | Instances |
 +----------------+------+-----+-------------+-----------+-----------+
-| bun_app        | 0.5  | 0.5 | 224         |           | 1         |
-| deno_app       | 0.5  | 0.5 | 224         |           | 1         |
-| main_app       | 0.5  | 0.5 | 224         |           | 1         |
-| nodejs_app     | 0.5  | 0.5 | 224         |           | 1         |
+| bun_app        | 0.1  | 0.1 | 64          |           | 1         |
+| deno_app       | 0.1  | 0.1 | 64          | 512       | 1         |
+| main_app       | 0.1  | 0.1 | 64          |           | 1         |
+| nodejs_app     | 0.1  | 0.1 | 64          |           | 1         |
 +----------------+------+-----+-------------+-----------+-----------+
 ```
 
@@ -222,6 +229,17 @@ In the Upsun console, you can view resource consumption over time for each of th
 TBD
 
 ## Local development
+
+This demo includes two methods for local development. 
+
+- [Using local runtimes](#local-runtimes)
+- [Using Nix](#nix)
+
+### Local runtimes
+
+### Nix
+
+This demo uses 
 
 We can use Nix to replicate the production environment locally.
 
