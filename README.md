@@ -47,7 +47,7 @@ This is a simple demo project meant to introduce you to working with Javascript 
     Keep the **Production environment name** as the default `main`.
     Consider selecting a **Green region** (indicated with a green leaf) where carbon impact is lowest.
 1. Follow the instructions on the resulting screen to:
-    - Install the Upsun CLI
+    - [Install the Upsun CLI](https://docs.upsun.com/administration/cli.html)
     - Clone this repository
 
         ```bash
@@ -232,6 +232,8 @@ This demo includes two methods for local development.
 
 - [Using local runtimes](#local-runtimes)
 - [Using Nix](#nix)
+
+Both methods require that you have the [Upsun CLI installed](https://docs.upsun.com/administration/cli.html), and they assume you have already followed the above steps to deploy the project on Upsun.
 
 #### Local runtimes
 
