@@ -154,7 +154,7 @@ Resource configuration for the project YOUR_PROJECT_NAME (PROJECT_ID), environme
 You can reuse this same command to reduce the resources of each application to their minimum sizes:
 
 ```bash
-$ upsun resources:set --size '*:0.1' --disk '*:0'
+$ upsun resources:set --size '*:0.1' --disk 'database:256' --disk '*_app:0'
 
 ...
 
@@ -171,14 +171,18 @@ Summary of changes:
   App: nodejs_app
     CPU: decreasing from 0.5 to 0.1
     Memory: decreasing from 224 MB to 64 MB
+  Service: database
+    CPU: decreasing from 0.5 to 0.1
+    Memory: decreasing from 1408 MB to 448 MB
+    Disk: decreasing from 512 MB to 256 MB
 
-Are you sure you want to continue? [Y/n]
+Are you sure you want to continue? [Y/n] Y
 ```
 
 You can also increase the number of instances of any application when desired:
 
 ```bash
-$ upsun resources:set --count 'main_app:2' --disk '*:0'       
+$ upsun resources:set --count 'main_app:2' --disk 'database:256' --disk '*_app:0'       
 
 ...
 
@@ -291,7 +295,7 @@ nix-collect-garbage
 In your local environment, run the command:
 
 ```bash
-upsun environment new-feature main
+upsun environment:branch new-feature main
 ```
 
 Follow the prompts. 
@@ -303,11 +307,20 @@ When you're satisfied, feel free to `upsun merge` to promote your revisions into
 Ultimately, this is the workflow that makes Upsun standout amongst other providers. 
 While you may favor an integration to GitHub or GitLab over this local example, being able to iteratively improve your applications with _true staging environments_ in this way brings you a lot of power. 
 
-### 4. Do the demo
+### 4. Challenge: Set up an integration
+
+You currently have a workflow where revisions made locally are pushed directly to an Upsun project.
+That is, an Upsun project is the primary remote for your development work.
+
+It's more likely that you'll want to integrate the project with a repository on a service like GitHub, building on top of an existing CI/CD workflow. 
+
+See the [documentation](https://docs.upsun.com/integrations/source.html) for more details.
+
+### 5. Do the demo
 
 If you're looking to understand even more about the Upsun development workflow, follow the steps to spin up the [Upsun Demo Project](https://github.com/platformsh/demo-project/tree/main).
 
-### 5. Join the Community
+### 6. Join the Community
 
 There are far more concepts than could be explored in a single demo project, talk, or blog post. 
 But we have some of the best minds in web development and computing ready and excited to help with your side project, experiment, or next big idea.
