@@ -59,11 +59,11 @@ applications:
             'test-mount':
                 source: storage
 
-    workers:
-        watchdog:
-            commands:
-                start: |
-                    python watch.py $PLATFORM_APP_DIR/test-mount
+        workers:
+            watchdog:
+                commands:
+                    start: |
+                        python watch.py $PLATFORM_APP_DIR/test-mount
 
 
     # deno_app: 
