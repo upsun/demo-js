@@ -28,7 +28,7 @@ applications:
                 source_path: files
             'test-mountb':
                 source: service
-                service: network-storage
+                service: ns
                 source_path: filesb
 
         workers:
