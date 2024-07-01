@@ -40,8 +40,6 @@ applications:
                 commands:
                     start: |
                         python watch.py $PLATFORM_APP_DIR/test-mountb
-
-
 services:
     database:
         type: mariadb:10.4

@@ -9,13 +9,15 @@ import time
 import datetime
 import requests
 import logging
-from watchdog.observers import Observer
+# from watchdog.observers import Observer
+from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 
 class Watcher:
 
     def __init__(self, directory=".", handler=FileSystemEventHandler()):
-        self.observer = Observer()
+        # self.observer = Observer()
+        self.observer = PollingObserver()
         self.handler = handler
         self.directory = directory
 
