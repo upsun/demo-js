@@ -1,7 +1,7 @@
 # https://github.com/gorakhargosh/watchdog
 # https://pypi.org/project/requests/
 # https://philipkiely.com/code/python_watchdog.html
-# 
+# inotify only available on Linux, which doesn't match my local env
 
 import os
 import sys
@@ -45,7 +45,7 @@ class MyHandler(FileSystemEventHandler):
 
     def on_any_event(self, event):
         uninteresting_events = ["closed", "opened"]
-        if and ( not event.is_directory ) (event.event_type not in uninteresting_events):
+        if ( not event.is_directory ) and ( event.event_type not in uninteresting_events ):
             event_data = {
                 "src_path": event.src_path,
                 "dest_path": event.dest_path,
