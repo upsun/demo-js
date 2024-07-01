@@ -8,44 +8,31 @@ applications:
             - nodePackages.npm
             - python@3.12
             - python312Packages.pip
+            - inotify-tools
         hooks:
             build: |
                 set -e
                 pip install -r requirements.txt
                 npm install
                 npm run build
-
-        relationships:
-            database:
-            
         web:
             commands:
                 start: npm run start
-
+        # access:
+        #     ssh: admin
         mounts:
-            'test-mount':
+            'sensitive-data':
                 source: storage
-                source_path: files
-            'test-mountb':
-                source: service
-                service: ns
-                source_path: filesb
-
         workers:
             watchdog:
                 commands:
                     start: |
-                        python watch.py $PLATFORM_APP_DIR/test-mount
-            watchdogb:
-                commands:
-                    start: |
-                        python watch.py $PLATFORM_APP_DIR/test-mountb
+                        python watch.py $PLATFORM_APP_DIR/sensitive-data
+        relationships:
+            database:
 services:
     database:
         type: mariadb:10.4
-
-    ns:
-        type: network-storage:2.0
 
 routes:
 

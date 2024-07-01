@@ -1,6 +1,9 @@
 # https://github.com/gorakhargosh/watchdog
 # https://pypi.org/project/requests/
 # https://philipkiely.com/code/python_watchdog.html
+# Combined the above script with the one on the repo
+# _But_ we're dealing with Network mounted drives https://www.pythonanywhere.com/forums/topic/7521/
+# ... so we need to use the PollingObserver class https://python-watchdog.readthedocs.io/en/stable/_modules/watchdog/observers/polling.html
 # inotify only available on Linux, which doesn't match my local env
 
 import os
@@ -48,6 +51,7 @@ class MyHandler(FileSystemEventHandler):
     def on_any_event(self, event):
         uninteresting_events = ["closed", "opened"]
         if ( not event.is_directory ) and ( event.event_type not in uninteresting_events ):
+            print(dir(event))
             event_data = {
                 "src_path": event.src_path,
                 "dest_path": event.dest_path,
