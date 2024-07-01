@@ -44,7 +44,8 @@ class MyHandler(FileSystemEventHandler):
                     datefmt='%Y-%m-%d %H:%M:%S')
 
     def on_any_event(self, event):
-        if not event.is_directory:
+        uninteresting_events = ["closed", "opened"]
+        if and ( not event.is_directory ) (event.event_type not in uninteresting_events):
             event_data = {
                 "src_path": event.src_path,
                 "dest_path": event.dest_path,
