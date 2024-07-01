@@ -326,3 +326,7 @@ There are far more concepts than could be explored in a single demo project, tal
 But we have some of the best minds in web development and computing ready and excited to help with your side project, experiment, or next big idea.
 
 [Join us on Discord and less us help you get going](https://discord.gg/PkMc2pVCDV)!
+
+### 6. Testing notifications
+
+TBD
