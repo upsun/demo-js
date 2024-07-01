@@ -1,38 +1,5 @@
 applications:
 
-    # main_app:
-    #     source:
-    #         root: apps/main
-    #     stack:
-    #         - nodejs@22
-    #         - nodePackages.npm
-    #     hooks:
-    #         build: |
-    #             set -e
-    #             npm install
-    #             npm run setup-env
-    #             npm run build
-    #     web:
-    #         locations:
-    #             /:
-    #                 root: "dist"
-    #                 passthru: true
-    #                 index:
-    #                   - index.html
-
-    # bun_app: 
-    #     source:
-    #         root: apps/bun
-    #     stack:
-    #         - bun@1
-    #     hooks:
-    #         build: |
-    #             set -e
-    #             bun install
-    #     web:
-    #         commands:
-    #             start: bun start
-
     nodejs_app: 
         source:
             root: apps/nodejs
@@ -58,34 +25,29 @@ applications:
         mounts:
             'test-mount':
                 source: storage
+                source_path: files
+            'test-mountb':
+                source: service
+                service: network-storage
+                source_path: filesb
 
         workers:
             watchdog:
                 commands:
                     start: |
                         python watch.py $PLATFORM_APP_DIR/test-mount
+            watchdogb:
+                commands:
+                    start: |
+                        python watch.py $PLATFORM_APP_DIR/test-mountb
 
-
-    # deno_app: 
-    #     source:
-    #         root: apps/deno
-    #     stack:
-    #         - deno
-    #     variables:
-    #         env:
-    #             DENO_DIR: "cache"
-    #     hooks:
-    #         build: |
-    #             set -e
-    #             deno cache package.json
-    #             deno compile --allow-env --allow-net --allow-read main.ts
-    #     web:
-    #         commands:
-    #             start: deno task start
 
 services:
     database:
         type: mariadb:10.4
+
+    ns:
+        type: network-storage:2.0
 
 routes:
 
@@ -96,24 +58,3 @@ routes:
     "https://www.{default}":
         type: redirect
         to: "https://{default}/"
-
-    # "https://{default}/bun":
-    #     type: upstream
-    #     upstream: "bun_app:http"
-    # "https://www.{default}/bun":
-    #     type: redirect
-    #     to: "https://{default}/bun"
-
-    # "https://{default}/nodejs":
-    #     type: upstream
-    #     upstream: "nodejs_app:http"
-    # "https://www.{default}/nodejs":
-    #     type: redirect
-    #     to: "https://{default}/nodejs"
-
-    # "https://{default}/deno":
-    #     type: upstream
-    #     upstream: "deno_app:http"
-    # "https://www.{default}/deno":
-    #     type: redirect
-    #     to: "https://{default}/deno"
